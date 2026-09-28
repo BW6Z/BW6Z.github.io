@@ -1,19 +1,493 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Yudi Zheng</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Yudi Zheng — Computer Science student at NC State, working across research, software engineering, and accessible VR.">
+    <meta name="theme-color" content="#17324d">
+    <title>Yudi Zheng | Computer Science</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2317324d'/%3E%3Cpath d='M15 17h9l8 14 8-14h9L36 39v9h-8v-9z' fill='%23f4b860'/%3E%3C/svg%3E">
+    <style>
+        :root {
+            --ink: #17212b;
+            --muted: #5f6b76;
+            --navy: #17324d;
+            --accent: #c77933;
+            --paper: #f7f9fb;
+            --white: #ffffff;
+            --line: #dbe2e8;
+            --shadow: 0 18px 45px rgba(23, 50, 77, 0.10);
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            color: var(--ink);
+            background: var(--paper);
+            font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 16px;
+            line-height: 1.65;
+        }
+
+        a {
+            color: inherit;
+            text-decoration-color: rgba(199, 121, 51, 0.55);
+            text-underline-offset: 4px;
+        }
+
+        a:hover { color: var(--accent); }
+
+        .page {
+            display: grid;
+            grid-template-columns: minmax(250px, 320px) minmax(0, 820px);
+            gap: clamp(2rem, 5vw, 5rem);
+            width: min(1180px, calc(100% - 48px));
+            margin: 0 auto;
+            padding: clamp(2rem, 5vw, 4.5rem) 0;
+            align-items: start;
+        }
+
+        .profile {
+            position: sticky;
+            top: 2rem;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            background: var(--white);
+            box-shadow: var(--shadow);
+        }
+
+        .photo-placeholder {
+            display: grid;
+            min-height: 310px;
+            place-items: center;
+            color: #7f8c97;
+            background:
+                linear-gradient(135deg, rgba(23, 50, 77, 0.06), rgba(199, 121, 51, 0.13)),
+                repeating-linear-gradient(135deg, transparent 0 18px, rgba(255, 255, 255, 0.55) 18px 19px);
+            border-bottom: 1px solid var(--line);
+            text-align: center;
+        }
+
+        .photo-placeholder span {
+            padding: 0.55rem 0.9rem;
+            border: 1px solid rgba(23, 50, 77, 0.18);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.78);
+            font-size: 0.85rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .profile-body { padding: 1.55rem; }
+
+        .profile h1 {
+            margin: 0;
+            color: var(--navy);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            line-height: 1.05;
+        }
+
+        .role { margin: 0.55rem 0 1.4rem; color: var(--muted); }
+
+        .contact-list {
+            display: grid;
+            gap: 0.72rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-size: 0.94rem;
+        }
+
+        .contact-list a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .contact-list a::before {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+            content: "";
+            flex: 0 0 auto;
+        }
+
+        .language {
+            margin: 1.4rem 0 0;
+            padding-top: 1.2rem;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        main { min-width: 0; }
+
+        .intro {
+            padding: clamp(1.25rem, 3vw, 2rem) 0 clamp(2rem, 5vw, 4rem);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .eyebrow {
+            margin: 0 0 0.9rem;
+            color: var(--accent);
+            font-size: 0.82rem;
+            font-weight: 750;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .intro h2 {
+            max-width: 760px;
+            margin: 0;
+            color: var(--navy);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(2.35rem, 6vw, 4.6rem);
+            font-weight: 500;
+            letter-spacing: -0.035em;
+            line-height: 1.02;
+        }
+
+        .intro-copy {
+            max-width: 690px;
+            margin: 1.5rem 0 0;
+            color: var(--muted);
+            font-size: clamp(1rem, 2vw, 1.15rem);
+        }
+
+        .section {
+            padding: clamp(2.8rem, 6vw, 4.5rem) 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .section:last-child { border-bottom: 0; }
+
+        .section-heading {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 1.5rem;
+            align-items: baseline;
+            margin-bottom: 2rem;
+        }
+
+        .section-number {
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+        }
+
+        .section h3 {
+            margin: 0;
+            color: var(--navy);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 500;
+        }
+
+        .timeline { display: grid; gap: 2.4rem; }
+
+        .entry {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 1.5rem;
+        }
+
+        .date {
+            padding-top: 0.18rem;
+            color: var(--muted);
+            font-size: 0.82rem;
+            font-weight: 650;
+            letter-spacing: 0.03em;
+            line-height: 1.45;
+        }
+
+        .entry h4,
+        .project h4 {
+            margin: 0;
+            color: var(--navy);
+            font-size: 1.08rem;
+            line-height: 1.35;
+        }
+
+        .organization {
+            margin: 0.2rem 0 0.7rem;
+            color: var(--accent);
+            font-size: 0.92rem;
+            font-weight: 650;
+        }
+
+        .entry p,
+        .project p { margin: 0; color: var(--muted); overflow-wrap: anywhere; }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .project {
+            min-height: 220px;
+            padding: 1.4rem;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: var(--white);
+        }
+
+        .project.featured {
+            grid-column: 1 / -1;
+            min-height: 0;
+            border-color: rgba(199, 121, 51, 0.42);
+            background: linear-gradient(135deg, #fff 0%, #fbf4ec 100%);
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: var(--muted);
+            font-size: 0.8rem;
+            font-weight: 650;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .project p { margin-top: 0.75rem; }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--navy);
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .education-card {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 2rem;
+            padding: 1.6rem;
+            border-radius: 18px;
+            color: var(--white);
+            background: var(--navy);
+        }
+
+        .education-card h4 {
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.35rem;
+        }
+
+        .education-card p { margin: 0.4rem 0 0; color: #dbe5ee; }
+        .education-meta { text-align: right; }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 1.4rem;
+        }
+
+        .skill {
+            padding: 0.45rem 0.78rem;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: var(--white);
+            color: var(--navy);
+            font-size: 0.9rem;
+            font-weight: 650;
+        }
+
+        .activity {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 1.5rem;
+        }
+
+        .activity + .activity { margin-top: 1.7rem; }
+        .activity h4 { margin: 0; color: var(--navy); }
+        .activity p { margin: 0.35rem 0 0; color: var(--muted); }
+
+        footer {
+            padding: 2rem 0 0;
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 820px) {
+            .page {
+                grid-template-columns: 1fr;
+                width: min(100% - 32px, 680px);
+            }
+
+            .profile {
+                position: static;
+                display: grid;
+                grid-template-columns: minmax(160px, 0.8fr) 1.2fr;
+            }
+
+            .photo-placeholder {
+                min-height: 260px;
+                border-right: 1px solid var(--line);
+                border-bottom: 0;
+            }
+        }
+
+        @media (max-width: 580px) {
+            .page { width: min(100% - 24px, 520px); padding-top: 0.75rem; }
+            .profile { grid-template-columns: 1fr; }
+            .photo-placeholder {
+                min-height: 280px;
+                border-right: 0;
+                border-bottom: 1px solid var(--line);
+            }
+            .section-heading,
+            .entry,
+            .activity { grid-template-columns: 1fr; gap: 0.55rem; }
+            .projects { grid-template-columns: 1fr; }
+            .project.featured { grid-column: auto; }
+            .education-card { grid-template-columns: 1fr; }
+            .education-meta { text-align: left; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+        }
+    </style>
 </head>
-
 <body>
-    <h1>Yudi Zheng</h1>
-    <p>Computer Science Student at NC State</p>
+    <div class="page">
+        <aside class="profile" aria-label="Profile and contact information">
+            <div class="photo-placeholder" role="img" aria-label="Reserved space for Yudi Zheng's portrait">
+                <span>Photo coming soon</span>
+            </div>
+            <div class="profile-body">
+                <h1>Yudi Zheng</h1>
+                <p class="role">Computer Science Student<br>NC State University</p>
+                <ul class="contact-list">
+                    <li><a href="mailto:yzheng42@ncsu.edu">yzheng42@ncsu.edu</a></li>
+                    <li><a href="https://www.linkedin.com/in/yudi-zheng-us" target="_blank" rel="noreferrer">LinkedIn</a></li>
+                    <li><a href="https://github.com/BW6Z" target="_blank" rel="noreferrer">GitHub</a></li>
+                </ul>
+                <p class="language"><strong>Languages</strong><br>Mandarin · Native<br>English · Professional</p>
+            </div>
+        </aside>
 
-    <h2>Projects</h2>
+        <main>
+            <header class="intro">
+                <p class="eyebrow">Software · Research · Virtual Reality</p>
+                <h2>I build practical systems and explore new ways to experience technical information.</h2>
+                <p class="intro-copy">Computer Science undergraduate at NC State with experience in computer vision research, data-quality analysis, systems programming, full-stack development, and immersive technology.</p>
+            </header>
 
-    <p>
-        <a href="https://github.com/LinResearchGroup-NCSU/VMD_Animation">
-            VMD + VR Research Project
-        </a>
-    </p>
+            <section class="section" aria-labelledby="experience-heading">
+                <div class="section-heading">
+                    <span class="section-number">01</span>
+                    <h3 id="experience-heading">Research Experience</h3>
+                </div>
+                <div class="timeline">
+                    <article class="entry">
+                        <div class="date">May – Aug 2025</div>
+                        <div>
+                            <h4>Multi-Object Tracking Research Intern</h4>
+                            <p class="organization">Intelligent Computer Research Center, Institute of Computing Technology, Chinese Academy of Sciences</p>
+                            <p>Benchmarked SORT, DeepSORT, and ByteTrack on proprietary datasets, explored region-growing methods for infrared target tracking, and documented experimental results for research use.</p>
+                        </div>
+                    </article>
+                    <article class="entry">
+                        <div class="date">Feb – Apr 2026</div>
+                        <div>
+                            <h4>Undergraduate Researcher · Crowd Labeling Quality Control</h4>
+                            <p class="organization">North Carolina State University</p>
+                            <p>Built Python and MySQL evaluation workflows using agreement metrics and entropy-based anomaly detection to identify unreliable annotation patterns, with integration tests against manual benchmarks.</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section" aria-labelledby="projects-heading">
+                <div class="section-heading">
+                    <span class="section-number">02</span>
+                    <h3 id="projects-heading">Selected Projects</h3>
+                </div>
+                <div class="projects">
+                    <article class="project featured">
+                        <div class="project-meta"><span>Current Focus · VR</span><span>In progress</span></div>
+                        <h4>VMD Molecular Visualization — VR Adaptation</h4>
+                        <p>Responsible for adapting an existing VMD molecular-animation project for use in virtual reality. The underlying VMD animation project was created by the Lin Research Group.</p>
+                        <a class="project-link" href="https://github.com/LinResearchGroup-NCSU/VMD_Animation" target="_blank" rel="noreferrer">View source VMD project ↗</a>
+                    </article>
+                    <article class="project">
+                        <div class="project-meta"><span>VR Accessibility</span><span>1st Place · 2024</span></div>
+                        <h4>Engineering Grand Challenges Project</h4>
+                        <p>Designed a VR-based concept to improve access for people with visual impairments, then presented the project’s goals, technology, and potential impact through a professional poster.</p>
+                    </article>
+                    <article class="project">
+                        <div class="project-meta"><span>C · Systems</span><span>Oct – Nov 2025</span></div>
+                        <h4>Compressed File Archive</h4>
+                        <p>Built a command-line archiving system with Byte Pair Encoding, deterministic rule selection, binary file I/O, dynamic memory management, and robust error handling.</p>
+                    </article>
+                    <article class="project">
+                        <div class="project-meta"><span>Full Stack · Team</span><span>Feb – Apr 2026</span></div>
+                        <h4>WolfCafe System</h4>
+                        <p>Developed backend APIs and frontend features for a role-based food-ordering system, supported by secure workflows, code reviews, and black-box and white-box testing.</p>
+                    </article>
+                    <article class="project">
+                        <div class="project-meta"><span>Web · Hackathon</span><span>Feb 2026</span></div>
+                        <h4>Investment Simulation Platform</h4>
+                        <p>Created a beginner-focused stock-trading simulation with portfolio tracking, transaction workflows, and a responsive interface integrated with the backend.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section" aria-labelledby="education-heading">
+                <div class="section-heading">
+                    <span class="section-number">03</span>
+                    <h3 id="education-heading">Education & Skills</h3>
+                </div>
+                <div class="education-card">
+                    <div>
+                        <h4>North Carolina State University</h4>
+                        <p>Bachelor of Science in Computer Science</p>
+                    </div>
+                    <div class="education-meta">
+                        <strong>Aug 2024 – May 2028</strong>
+                        <p>GPA: 3.76 / 4.00</p>
+                    </div>
+                </div>
+                <div class="skills" aria-label="Technical skills">
+                    <span class="skill">Java</span>
+                    <span class="skill">C / C++</span>
+                    <span class="skill">Python</span>
+                    <span class="skill">Linux</span>
+                    <span class="skill">Git</span>
+                    <span class="skill">Spring Boot</span>
+                    <span class="skill">MySQL</span>
+                </div>
+                <p class="intro-copy"><strong>Core coursework:</strong> Data Structures, Software Engineering, Operating Systems, Discrete Mathematics, Introductory Linear Algebra, Probability and Statistics for Engineers, and Calculus I–III.</p>
+            </section>
+
+            <section class="section" aria-labelledby="activities-heading">
+                <div class="section-heading">
+                    <span class="section-number">04</span>
+                    <h3 id="activities-heading">Community</h3>
+                </div>
+                <article class="activity">
+                    <div class="date">Jan 2025 / Aug 2026</div>
+                    <div>
+                        <h4>International Student Orientation Leader</h4>
+                        <p>Led group activities, supported event coordination, and helped new international students adjust to campus life through peer guidance and panel discussions.</p>
+                    </div>
+                </article>
+                <footer>© 2026 Yudi Zheng</footer>
+            </section>
+        </main>
+    </div>
 </body>
 </html>
