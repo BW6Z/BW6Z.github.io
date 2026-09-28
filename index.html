@@ -60,26 +60,22 @@
             box-shadow: var(--shadow);
         }
 
-        .photo-placeholder {
-            display: grid;
+        .profile-photo {
+            overflow: hidden;
             min-height: 310px;
-            place-items: center;
-            color: #7f8c97;
-            background:
-                linear-gradient(135deg, rgba(23, 50, 77, 0.06), rgba(199, 121, 51, 0.13)),
-                repeating-linear-gradient(135deg, transparent 0 18px, rgba(255, 255, 255, 0.55) 18px 19px);
+            height: 310px;
             border-bottom: 1px solid var(--line);
-            text-align: center;
+            background: #eef1f3;
         }
 
-        .photo-placeholder span {
-            padding: 0.55rem 0.9rem;
-            border: 1px solid rgba(23, 50, 77, 0.18);
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.78);
-            font-size: 0.85rem;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
+        .profile-photo img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 50% 52%;
+            transform: scale(1.38);
+            transform-origin: 50% 52%;
         }
 
         .profile-body { padding: 1.55rem; }
@@ -332,8 +328,9 @@
                 grid-template-columns: minmax(160px, 0.8fr) 1.2fr;
             }
 
-            .photo-placeholder {
+            .profile-photo {
                 min-height: 260px;
+                height: 260px;
                 border-right: 1px solid var(--line);
                 border-bottom: 0;
             }
@@ -342,8 +339,9 @@
         @media (max-width: 580px) {
             .page { width: min(100% - 24px, 520px); padding-top: 0.75rem; }
             .profile { grid-template-columns: 1fr; }
-            .photo-placeholder {
+            .profile-photo {
                 min-height: 280px;
+                height: 280px;
                 border-right: 0;
                 border-bottom: 1px solid var(--line);
             }
@@ -364,8 +362,8 @@
 <body>
     <div class="page">
         <aside class="profile" aria-label="Profile and contact information">
-            <div class="photo-placeholder" role="img" aria-label="Reserved space for Yudi Zheng's portrait">
-                <span>Photo coming soon</span>
+            <div class="profile-photo">
+                <img src="profile.jpg" alt="Portrait of Yudi Zheng" width="1280" height="1707">
             </div>
             <div class="profile-body">
                 <h1>Yudi Zheng</h1>
@@ -455,6 +453,7 @@
                     <div>
                         <h4>North Carolina State University</h4>
                         <p>Bachelor of Science in Computer Science</p>
+                        <p>Minor in Business Entrepreneurship</p>
                     </div>
                     <div class="education-meta">
                         <strong>Aug 2024 – May 2028</strong>
@@ -470,7 +469,7 @@
                     <span class="skill">Spring Boot</span>
                     <span class="skill">MySQL</span>
                 </div>
-                <p class="intro-copy"><strong>Core coursework:</strong> Data Structures, Software Engineering, Operating Systems, Discrete Mathematics, Introductory Linear Algebra, Probability and Statistics for Engineers, and Calculus I–III.</p>
+                <p class="intro-copy"><strong>Core coursework:</strong> Data Structures, Software Engineering, Operating Systems, Introduction to Artificial Intelligence, Automated Learning and Data Analysis, Discrete Mathematics, Introductory Linear Algebra, Probability and Statistics for Engineers, and Calculus I–III.</p>
             </section>
 
             <section class="section" aria-labelledby="activities-heading">
@@ -483,6 +482,12 @@
                     <div>
                         <h4>International Student Orientation Leader</h4>
                         <p>Led group activities, supported event coordination, and helped new international students adjust to campus life through peer guidance and panel discussions.</p>
+                    </div>
+                </article>
+                <article class="activity">
+                    <div class="date">Apr 2026</div>
+                    <div>
+                        <h4>Volunteer · Raleigh-Durham Startup Week</h4>
                     </div>
                 </article>
                 <footer>© 2026 Yudi Zheng</footer>
