@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Repod: a Meta-coordinated development assistant built by Yudi Zheng during the Meta Global AI Developer Hackathon. Explore the workflow, real results, and engineering lessons.">
+    <meta name="theme-color" content="#17324d">
+    <title>Repod | Yudi Zheng</title>
+    <style>
+        :root { --ink: #17212b; --muted: #5f6b76; --navy: #17324d; --accent: #c77933; --paper: #f7f9fb; --white: #fff; --line: #dbe2e8; }
+        * { box-sizing: border-box; }
+        body { margin: 0; color: var(--ink); background: var(--paper); font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 16px; line-height: 1.7; }
+        a { color: var(--navy); text-decoration-color: rgba(199, 121, 51, .55); text-underline-offset: 4px; }
+        a:hover { color: var(--accent); }
+        a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+        .page { width: min(900px, calc(100% - 48px)); margin: 0 auto; padding: 2rem 0 3rem; }
+        nav { margin-bottom: 3rem; font-size: .94rem; }
+        header { padding-bottom: 2.5rem; border-bottom: 1px solid var(--line); }
+        .eyebrow { margin: 0 0 .8rem; color: var(--accent); font-size: .8rem; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+        h1, h2 { color: var(--navy); font-family: Georgia, "Times New Roman", serif; font-weight: 500; line-height: 1.15; }
+        h1 { margin: 0; font-size: clamp(3rem, 10vw, 5rem); letter-spacing: -.035em; }
+        h2 { margin: 0 0 1rem; font-size: clamp(1.7rem, 4vw, 2.2rem); }
+        h3 { margin: 0 0 .5rem; color: var(--navy); font-size: 1.05rem; }
+        p { margin: .7rem 0 0; }
+        .lead { max-width: 750px; margin-top: 1.1rem; color: var(--muted); font-size: 1.2rem; }
+        .links { display: flex; flex-wrap: wrap; gap: .7rem 1.4rem; margin-top: 1.5rem; font-weight: 650; }
+        .metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 2rem 0 1rem; }
+        .metric { padding: 1.2rem; border: 1px solid var(--line); border-radius: 16px; background: var(--white); }
+        .metric strong { display: block; color: var(--navy); font-size: clamp(1.5rem, 5vw, 2rem); line-height: 1.3; }
+        .metric span { color: var(--muted); font-size: .88rem; }
+        .note { color: var(--muted); font-size: .9rem; }
+        section { padding: 2.4rem 0; border-bottom: 1px solid var(--line); }
+        section p, li { max-width: 780px; }
+        ol, ul { padding-left: 1.4rem; margin: .8rem 0 0; }
+        li + li { margin-top: .65rem; }
+        .models { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1.2rem; }
+        .model { padding: 1.2rem; border: 1px solid var(--line); border-radius: 16px; background: var(--white); }
+        .model p { color: var(--muted); }
+        .table-wrap { overflow-x: auto; margin-top: 1.2rem; border: 1px solid var(--line); border-radius: 12px; background: var(--white); }
+        table { width: 100%; border-collapse: collapse; text-align: left; font-size: .92rem; }
+        caption { padding: 1rem; color: var(--muted); text-align: left; font-size: .85rem; }
+        th, td { padding: .8rem 1rem; border-top: 1px solid var(--line); vertical-align: top; }
+        thead th { background: #edf2f6; color: var(--navy); }
+        td:first-child, th:first-child { min-width: 150px; }
+        .tech { color: var(--muted); }
+        footer { padding-top: 2rem; color: var(--muted); font-size: .88rem; }
+        @media (max-width: 580px) { .page { width: calc(100% - 32px); padding-top: 1.2rem; } nav { margin-bottom: 2rem; } .metrics { gap: .5rem; } .metric { padding: .8rem .65rem; } .metric span { font-size: .78rem; } .models { grid-template-columns: 1fr; } th, td { padding: .7rem; } }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <nav aria-label="Breadcrumb"><a href="index.html#projects-heading">← Yudi Zheng · Selected Projects</a></nav>
+        <main>
+            <header>
+                <p class="eyebrow">Meta Global AI Developer Hackathon · November 2026</p>
+                <h1>Repod</h1>
+                <p class="lead">One development request. A Meta model plans the work, chooses the models, and tracks the cost. Programs check the result.</p>
+                <p>Built during the hackathon, with the first project commit on October 30, 2026.</p>
+                <div class="links" aria-label="Project resources">
+                    <a href="https://github.com/BW6Z/Repod" target="_blank" rel="noreferrer">Source code ↗</a>
+                    <a href="https://bw6z.github.io/Repod/replay/" target="_blank" rel="noreferrer">Explore real runs ↗</a>
+                    <a href="https://github.com/BW6Z/Repod#results-from-real-runs" target="_blank" rel="noreferrer">Full experiment record ↗</a>
+                </div>
+                <div class="metrics" aria-label="Results from the recorded demo run">
+                    <div class="metric"><strong>31/31</strong><span>Hidden tests passed</span></div>
+                    <div class="metric"><strong>$0.0902</strong><span>Total model cost</span></div>
+                    <div class="metric"><strong>3 tasks</strong><span>Completed in the demo</span></div>
+                </div>
+                <p class="note">One recorded demo on November 4, 2026. Costs are list-price estimates recorded by Repod. This is a single-run result, not a general benchmark.</p>
+            </header>
+
+            <section aria-labelledby="problem-heading">
+                <h2 id="problem-heading">Why I built it</h2>
+                <p>A development request mixes difficult engineering with routine edits. Sending everything to one strong model can waste money; moving simpler tasks to another tool means repeating context and coordinating the work yourself.</p>
+                <p>Repod makes that coordination explicit. A Meta model splits a request into tasks, labels their complexity and impact, and chooses an executor for each. The user approves the plan, while the program enforces a minimum model capability for risky work.</p>
+            </section>
+
+            <section aria-labelledby="workflow-heading">
+                <h2 id="workflow-heading">What I built</h2>
+                <ol>
+                    <li><strong>Plan with the user.</strong> Clarifying questions, a proposed task plan, and approval happen in one conversation.</li>
+                    <li><strong>Route by complexity and impact.</strong> Complex or high-impact tasks must use a strong model. Simpler work can use a lower-cost model.</li>
+                    <li><strong>Check and repair.</strong> Type checks and tests run after each task. On failure, Meta decides whether to repair on the same model, escalate, or stop; program limits constrain that decision.</li>
+                    <li><strong>Freeze and evaluate.</strong> For the fixed demo request, hidden holdout tests run once on the frozen result. Their failure details are not returned to the models for repair.</li>
+                    <li><strong>Make the work inspectable.</strong> The viewer shows the conversation, attempts, decisions, delivered diff, token usage, and cost by phase. The static replay needs no API key.</li>
+                </ol>
+                <p class="tech"><strong>Stack:</strong> TypeScript, Node.js 24, Zod, the Responses API, and a plain HTML/CSS/JavaScript viewer. Engineering work also includes isolated working copies, file write scopes, budget reservations, event logging, and CI checks on Windows and Ubuntu.</p>
+            </section>
+
+            <section aria-labelledby="models-heading">
+                <h2 id="models-heading">Meta models and where they ran</h2>
+                <p>All recorded real runs used Meta open-weight models served through OpenRouter.</p>
+                <div class="models">
+                    <article class="model"><h3>Muse Spark Open</h3><p>Coordinates planning and routing, handles complex work and review, and decides how to respond to failed checks.</p></article>
+                    <article class="model"><h3>Muse Glimmer 30B</h3><p>Handles routine work and documentation in the cost-oriented preset. Failed work can be repaired on Glimmer before escalation.</p></article>
+                </div>
+                <p class="note">The repository also includes a Meta Model API configuration, but that endpoint was not used for the recorded real runs.</p>
+            </section>
+
+            <section aria-labelledby="demo-heading">
+                <h2 id="demo-heading">The recorded demo</h2>
+                <p>The fixed request adds dependency-order planning to a small TypeScript library: a planning algorithm, a CLI command, and documentation with a runnable example.</p>
+                <p>Meta assigned the planner and CLI to Spark Open, and the docs task to Glimmer. The first two tasks passed immediately. The docs example failed a type check once; Meta chose to repair it on Glimmer, and the next attempt passed.</p>
+                <p>The run completed, and the frozen result passed all 31 hidden tests. It delivered ten changed files, including three visible test files supplied by Repod. Total cost was $0.0902, with about $0.0100 spent on coordination.</p>
+                <p class="note">Recorded run: <code>run-2026-11-04T23-23-12-584Z</code>. See the <a href="https://bw6z.github.io/Repod/replay/">replay</a> for the task history and diff.</p>
+            </section>
+
+            <section aria-labelledby="results-heading">
+                <h2 id="results-heading">What the experiments showed</h2>
+                <p>The comparison uses one strong model alone (A), Repod with strong models everywhere (B), and Repod with lower-cost and stronger models (C). The table below is a selection of individual runs; each experiment ran only once per arm.</p>
+                <div class="table-wrap" role="region" aria-label="Selected run results" tabindex="0">
+                    <table>
+                        <caption>Real OpenRouter runs on November 4, 2026. The reviewer changed between earlier experiments, so these are exploratory observations.</caption>
+                        <thead><tr><th scope="col">Run</th><th scope="col">Status</th><th scope="col">Holdout</th><th scope="col">Cost</th></tr></thead>
+                        <tbody>
+                            <tr><th scope="row">Experiment 1 · A</th><td>Completed</td><td>31/31</td><td>$0.0413</td></tr>
+                            <tr><th scope="row">Experiment 2 · A</th><td>Completed after repairs</td><td>31/31</td><td>$0.1563</td></tr>
+                            <tr><th scope="row">Experiment 3 · A</th><td>Incomplete: output limit</td><td>Not run</td><td>$0.0692</td></tr>
+                            <tr><th scope="row">Experiment 3 · C</th><td>Incomplete: review concerns</td><td>31/31</td><td>$0.1263</td></tr>
+                            <tr><th scope="row">Experiment 4 · B</th><td>Completed</td><td>31/31</td><td>$0.1491</td></tr>
+                            <tr><th scope="row">Recorded demo · C</th><td>Completed</td><td>31/31</td><td>$0.0902</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>Routing did not establish a general cost advantage: the single strong model was cheapest in one run, while repair costs varied considerably. Coordination and review have their own cost. A passing holdout also does not guarantee a completed run, because review findings can still require a human decision.</p>
+                <p>All reported failures and the remaining runs are documented in the <a href="https://github.com/BW6Z/Repod#results-from-real-runs">repository’s full results</a>.</p>
+            </section>
+
+            <section aria-labelledby="lessons-heading">
+                <h2 id="lessons-heading">Engineering lessons and next steps</h2>
+                <ul>
+                    <li><strong>Review needs evidence.</strong> Early reviewers raised concerns about code that had passed checks. Providing the check results and interface contract helped ground their judgments.</li>
+                    <li><strong>Output limits affect comparisons.</strong> The shared 16,000-token executor cap stopped one single-model run. Per-model output limits are a follow-up.</li>
+                    <li><strong>Verification has a scope.</strong> The hidden tests validate the fixed demo request. Free-form requests currently run only on the bundled sample library, checked by its type check and existing tests.</li>
+                    <li><strong>Isolation needs more work.</strong> Separate working copies and restricted child-process environments are implemented; operating-system sandboxing, support for other repositories, and generated checks remain planned.</li>
+                </ul>
+            </section>
+        </main>
+        <footer>© 2026 Yudi Zheng · <a href="index.html#projects-heading">Back to selected projects</a></footer>
+    </div>
+</body>
+</html>

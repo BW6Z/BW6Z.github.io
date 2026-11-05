@@ -51,6 +51,8 @@
         }
 
         .profile {
+            position: sticky;
+            top: 2rem;
             overflow: hidden;
             border: 1px solid var(--line);
             border-radius: 22px;
@@ -455,6 +457,14 @@
                     <h3 id="projects-heading">Selected Projects</h3>
                 </div>
                 <div class="projects">
+                    <article class="project featured" id="repod-project">
+                        <div class="project-meta"><span>Meta AI · Hackathon</span><span>Nov 2026</span></div>
+                        <h4>Repod — Meta-Coordinated Development</h4>
+                        <p>Built a development assistant that lets a Meta model plan a request, route tasks between lower-cost and stronger models, and decide repairs after automated checks. Each model call records its token usage and cost.</p>
+                        <p><strong>Recorded demo:</strong> all 31 hidden holdout tests passed for $0.0902. Real runs used Meta’s Muse Spark Open and Muse Glimmer 30B on OpenRouter; the experiments include failures and do not establish a general cost advantage.</p>
+                        <p><strong>Technologies:</strong> TypeScript · Node.js · Model orchestration · Automated verification</p>
+                        <a class="project-link" href="repod.html">Project overview &amp; results →</a>
+                    </article>
                     <article class="project featured">
                         <div class="project-meta"><span>Undergraduate Researcher · VR</span><span>In progress</span></div>
                         <h4>VMD Molecular Visualization — VR Adaptation</h4>
